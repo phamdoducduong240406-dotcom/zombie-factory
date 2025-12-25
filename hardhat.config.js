@@ -1,20 +1,17 @@
 import "@nomicfoundation/hardhat-toolbox";
-import "dotenv/config"; // Lệnh này giúp đọc file .env
+import "dotenv/config";
 
+// Chỉ cần lấy mỗi Key ví thôi
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
-const BSC_TESTNET_URL = process.env.BSC_TESTNET_URL || "";
 
 export default {
   solidity: "0.8.24",
   networks: {
-    // Cấu hình mạng BSC Testnet
     bscTestnet: {
-      url: BSC_TESTNET_URL,
-      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
+      // Dán trực tiếp link Public Node vào đây cho chắc ăn
+      url: "https://bsc-testnet.publicnode.com", 
       chainId: 97,
-    },
-    // Mạng nội bộ (Local) mặc định không cần cấu hình thêm
-    hardhat: {
+      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
     },
   },
 };
